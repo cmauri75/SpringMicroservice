@@ -12,6 +12,6 @@
 
 	<modules>
 		<module>school-service</module>
-		<module>school-ui</module>	
+		<module>school-ui</module>
 	</modules>
 </project>
