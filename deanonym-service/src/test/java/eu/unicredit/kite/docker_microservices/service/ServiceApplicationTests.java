@@ -1,4 +1,4 @@
-package eu.unicredit.kite.docker_microservices.service.service;
+package eu.unicredit.kite.docker_microservices.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,10 +9,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ServiceApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
-
+    @Test
+    public void contextLoads() {
+    }
 
 
 }
