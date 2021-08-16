@@ -1,4 +1,4 @@
-package eu.unicredit.kite.docker_microservices.service.service.controllers;
+package eu.unicredit.kite.docker_microservices.service.controllers;
 
 
 import eu.unicredit.kite.docker_microservices.service.dtos.KiteUserDto;
@@ -21,7 +21,7 @@ public class DeanonymController {
         this.deanonymService = deanonymService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<KiteUserDto> listAll() {
         return deanonymService.listAll();
     }
