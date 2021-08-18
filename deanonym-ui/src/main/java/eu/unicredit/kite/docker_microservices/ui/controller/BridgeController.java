@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +34,8 @@ public class BridgeController {
         return new ModelAndView("index");
     }
 
+    //all Authenticated user has this scope
+    @PreAuthorize("hasAuthority('SCOPE_profile')")
     @GetMapping("/list")
     public ResponseEntity<List<KiteUserDto>> listClasses() {
         log.info("Calling list of kite users from: {}", serviceHost);
@@ -42,6 +45,7 @@ public class BridgeController {
                         });
     }
 
+    //@PreAuthorize("hasAuthority('ROLE_USER')")
     @GetMapping("/list/{code}")
     public ResponseEntity<KiteUserDto> listClasses(@PathVariable String code) {
         log.info("Calling list of kite users of: {}", code);

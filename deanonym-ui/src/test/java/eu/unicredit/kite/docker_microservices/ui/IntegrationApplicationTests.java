@@ -12,16 +12,18 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
-//@TestPropertySource(
-//        locations = "classpath:application-integrationtest.properties")
 @SpringBootTest
 public class IntegrationApplicationTests {
+
+    private final static String TEST_USER_ID = "c.mauri@gmail.com";
 
     @Autowired
     MockMvc mockMvc;
@@ -30,6 +32,8 @@ public class IntegrationApplicationTests {
     public void getPerson() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/list/P1")
+                        .with(user(TEST_USER_ID))
+                        .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", is("Giuseppe")))
