@@ -30,15 +30,6 @@ Starting service
 * properties are moved on bootstrap.yml 'cause spring need to know BEFORE application starts where config is located, Spring needs to know where your Eureka Server is located and how it should search for configuration 
 * Tests are integration test, call to service that invokes backend
 
-
-## discovery
-Created via spring-boot with "eureka server" dependency, is used by other service for presenting themself to other
-### Hot parts:
-* Other service must know his address and specify it in their application.properties
-
-## config
-Created via spring-boot with "eureka server" and "Config server" dependencies, is used by other service in order to remove other configurations from internal files.
-Will contain Okta config
 ### Okta
 Provides SSO facility. Install via:
 `
@@ -49,9 +40,21 @@ okta apps create
 `
 * Choose Web, Other, redirect url: https://localhost:8080/authorization-code/callback, Logout Redirect URI of https://localhost:8080
 * Go to okta admin page, search for created application and get client-id and client-secret, these data should be put in deanonym-ui.properties
+
+
+## discovery
+Created via spring-boot with "eureka server" dependency, is used by other service for presenting themself to other
+### Hot parts:
+* Other service must know his address and specify it in their application.properties
+
+## config
+Created via spring-boot with "eureka server" and "Config server" dependencies, is used by other service in order to remove other configurations from internal files.
+Will contain Okta config
+
 ### Hot parts:
 * Other service must know his address and specify it in their application.properties, used for auth config (via Okta)
 * in root path create daenonym-ui.properties with okta data, these will be served in: http://localhost:8888/deanonym-ui.properties
+* Only apps wich are registered on okta can have properties, SERVICENAME-xxx.properties are also available via merge in hiearchical way
 
 
 # Verifications for microservicing
