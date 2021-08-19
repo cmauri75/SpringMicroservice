@@ -1,0 +1,21 @@
+version: '3'
+services:
+  deanonym-service:
+    image: kite/microservice-docker-deanonym-service:0.0.1-SNAPSHOT
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery:8761/eureka
+    depends_on:
+      - discovery
+      - config
+  deanonym-ui:
+    image: kite/microservice-docker-deanonym-ui:0.0.1-SNAPSHOT
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery:8761/eureka
+    restart: on-failure
+    depends_on:
+      - discovery
+      - config
+    ports:
+      - 8080:8080

@@ -10,3 +10,4 @@ spring:
       discovery:
         enabled: true
         service-id: CONFIGSERVER
+      failFast: true

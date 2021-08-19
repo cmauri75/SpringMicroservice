@@ -13,6 +13,5 @@
 	<modules>
 		<module>deanonym-service</module>
 		<module>deanonym-ui</module>
-		<module>discovery</module>
 	</modules>
 </project>
