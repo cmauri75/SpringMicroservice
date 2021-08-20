@@ -62,3 +62,5 @@ Will contain Okta config
 * DataFiller. Da sostituire con un docker per i test (cambia anche H2 in postgres)
 * Scrivere servizio di bulk load
 * Tests: impostare sistema di integration test: DB di test, startare docker per backend, startare UI (ok) invocare servizio. 
+
+### Based on: https://developer.okta.com/blog/2019/02/28/spring-microservices-docker#use-docker-to-package-your-spring-apps

@@ -13,7 +13,8 @@ services:
     environment:
       - JAVA_OPTS=
         -DEUREKA_SERVER=http://discovery:8761/eureka
-    restart: on-failure
+        #-Dspring.profiles.active=production use for load other props
+  restart: on-failure
     depends_on:
       - discovery
       - config

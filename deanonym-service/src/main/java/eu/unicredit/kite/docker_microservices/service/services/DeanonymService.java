@@ -1,14 +1,12 @@
 package eu.unicredit.kite.docker_microservices.service.services;
 
-import eu.unicredit.kite.docker_microservices.service.dtos.KiteUserDto;
-import eu.unicredit.kite.docker_microservices.service.entities.KiteUser;
+import eu.unicredit.kite.docker_microservices.service.dtos.KiteuserDto;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface DeanonymService {
 
-    List<KiteUserDto> listAll();
+    List<KiteuserDto> listAll();
 
-    KiteUserDto deAnonymize(String code);
+    KiteuserDto deAnonymize(String code);
 }

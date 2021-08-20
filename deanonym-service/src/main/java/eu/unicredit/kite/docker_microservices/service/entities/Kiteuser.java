@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class KiteUser {
+public class Kiteuser {
     @Id
     @NonNull private String code;
     private String name;
@@ -17,12 +17,12 @@ public class KiteUser {
     private String companyName;
     @NonNull private boolean isCompany;
 
-    public static KiteUser createCompany(String code, String companyName) {
-        return new KiteUser(code, null,null,companyName,true);
+    public static Kiteuser createCompany(String code, String companyName) {
+        return new Kiteuser(code, null,null,companyName,true);
     }
 
-    public static KiteUser createPerson(String code, String name, String surname) {
-        return new KiteUser(code, name,surname,null,false);
+    public static Kiteuser createPerson(String code, String name, String surname) {
+        return new Kiteuser(code, name,surname,null,false);
     }
 
 }

@@ -1,8 +1,8 @@
 package eu.unicredit.kite.docker_microservices.service.services;
 
-import eu.unicredit.kite.docker_microservices.service.dao.KiteUserDao;
-import eu.unicredit.kite.docker_microservices.service.dtos.KiteUserDto;
-import eu.unicredit.kite.docker_microservices.service.entities.KiteUser;
+import eu.unicredit.kite.docker_microservices.service.dao.KiteuserDao;
+import eu.unicredit.kite.docker_microservices.service.dtos.KiteuserDto;
+import eu.unicredit.kite.docker_microservices.service.entities.Kiteuser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,16 +13,16 @@ import java.util.stream.Collectors;
 @Service
 public class DeanonymServiceImpl implements DeanonymService {
 
-    private final KiteUserDao userDao;
+    private final KiteuserDao userDao;
 
     @Autowired
-    public DeanonymServiceImpl(KiteUserDao userDao) {
+    public DeanonymServiceImpl(KiteuserDao userDao) {
         this.userDao = userDao;
     }
 
 
     @Override
-    public List<KiteUserDto> listAll() {
+    public List<KiteuserDto> listAll() {
         return userDao
                 .findAll()
                 .stream()
@@ -32,13 +32,13 @@ public class DeanonymServiceImpl implements DeanonymService {
     }
 
     @Override
-    public KiteUserDto deAnonymize(String code) {
-        Optional<KiteUser> u =  userDao.findById(code);
+    public KiteuserDto deAnonymize(String code) {
+        Optional<Kiteuser> u =  userDao.findById(code);
         return u.isPresent()?User2Dto(u.get()):null;
     }
 
-    private static KiteUserDto User2Dto(KiteUser user) {
-        return KiteUserDto
+    private static KiteuserDto User2Dto(Kiteuser user) {
+        return KiteuserDto
                 .builder()
                 .code(user.getCode())
                 .name(user.getName())

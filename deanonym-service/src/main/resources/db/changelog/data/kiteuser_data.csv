@@ -1,0 +1,6 @@
+code;name;surname;company_name;is_company
+"P1";"Cesare";"Mauri";;false
+"P2";"Mirko";"Sciachero";;false
+"P3";"Giuseppe";"Rossini";;false
+"C1";;;"Techology";true
+"C2";;;"Logistic";true

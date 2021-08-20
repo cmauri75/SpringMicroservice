@@ -1,7 +1,7 @@
 package eu.unicredit.kite.docker_microservices.service;
 
-import eu.unicredit.kite.docker_microservices.service.dao.KiteUserDao;
-import eu.unicredit.kite.docker_microservices.service.entities.KiteUser;
+import eu.unicredit.kite.docker_microservices.service.dao.KiteuserDao;
+import eu.unicredit.kite.docker_microservices.service.entities.Kiteuser;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,17 +30,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 public class UnitServiceApplicationTests {
     @MockBean
-    KiteUserDao kiteUserDaoMock;
+    KiteuserDao kiteUserDaoMock;
 
     @Autowired
     MockMvc mockMvc;
 
-    KiteUser RECORD_1 = new KiteUser("P1", "Cesare", "Mauri", null, false);
-    KiteUser RECORD_2 = new KiteUser("C1", null, null, "TInvention", true);
+    Kiteuser RECORD_1 = new Kiteuser("P1", "Cesare", "Mauri", null, false);
+    Kiteuser RECORD_2 = new Kiteuser("C1", null, null, "TInvention", true);
 
     @Before
     public void setup() {
-        List<KiteUser> records = new ArrayList<>(Arrays.asList(RECORD_1, RECORD_2));
+        List<Kiteuser> records = new ArrayList<>(Arrays.asList(RECORD_1, RECORD_2));
         Mockito.when(kiteUserDaoMock.findAll()).thenReturn(records);
     }
 

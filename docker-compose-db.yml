@@ -1,0 +1,13 @@
+version: '3'
+services:
+  datastorage:
+    build:
+      context: docker-support/datastorage
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=kitedb
+      - POSTGRES_PASSWORD=IlMioSecret@
+      - TZ=GMT
+      - DB_USERNAME=deanonym
+      - DB_PWD=deanpwd

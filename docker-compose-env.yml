@@ -1,5 +1,17 @@
 version: '3'
 services:
+  datastorage:
+    build:
+      context: docker_support/docker-postgresql
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_MULTIPLE_DATABASES=deanonym
+      - POSTGRES_USER=deanonym
+      - POSTGRES_PASSWORD=IlMioSecret@
+      - TZ=GMT
+    volumes:
+      - ./docker_support/docker-postgresql/data:/data
   discovery:
     image: kite/microservice-docker-discovery:0.0.1-SNAPSHOT
     ports:

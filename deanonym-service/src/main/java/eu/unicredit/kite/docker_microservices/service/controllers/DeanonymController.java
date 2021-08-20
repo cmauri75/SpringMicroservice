@@ -1,7 +1,7 @@
 package eu.unicredit.kite.docker_microservices.service.controllers;
 
 
-import eu.unicredit.kite.docker_microservices.service.dtos.KiteUserDto;
+import eu.unicredit.kite.docker_microservices.service.dtos.KiteuserDto;
 import eu.unicredit.kite.docker_microservices.service.services.DeanonymService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,11 +22,11 @@ public class DeanonymController {
     }
 
     @GetMapping("")
-    public List<KiteUserDto> listAll() {
+    public List<KiteuserDto> listAll() {
         return deanonymService.listAll();
     }
     @GetMapping("/{code}")
-    public KiteUserDto deanon(@PathVariable String code) {
+    public KiteuserDto deanon(@PathVariable String code) {
         return deanonymService.deAnonymize(code);
     }
 

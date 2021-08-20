@@ -1,4 +1,4 @@
-package eu.unicredit.kite.docker_microservices.service.service.configuration;
+package eu.unicredit.kite.docker_microservices.service.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
