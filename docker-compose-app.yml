@@ -5,18 +5,21 @@ services:
     environment:
       - JAVA_OPTS=
         -DEUREKA_SERVER=http://discovery:8761/eureka
+        -Dspring.datasource.url=jdbc:postgresql://datastorage:5432/deanonym
     depends_on:
       - discovery
       - config
+      - datastorage
   deanonym-ui:
     image: kite/microservice-docker-deanonym-ui:0.0.1-SNAPSHOT
     environment:
       - JAVA_OPTS=
         -DEUREKA_SERVER=http://discovery:8761/eureka
         #-Dspring.profiles.active=production use for load other props
-  restart: on-failure
+    restart: on-failure
     depends_on:
       - discovery
       - config
+      - deanonym-service
     ports:
       - 8080:8080

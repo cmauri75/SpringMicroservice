@@ -2,29 +2,16 @@ version: '3'
 services:
   datastorage:
     build:
-      context: docker_support/docker-postgresql
+      context: docker-support/datastorage
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_MULTIPLE_DATABASES=deanonym
-      - POSTGRES_USER=deanonym
+      - POSTGRES_USER=kitedb
       - POSTGRES_PASSWORD=IlMioSecret@
       - TZ=GMT
-    volumes:
-      - ./docker_support/docker-postgresql/data:/data
+      - DB_USERNAME=deanonym
+      - DB_PWD=deanpwd
   discovery:
     image: kite/microservice-docker-discovery:0.0.1-SNAPSHOT
     ports:
       - 8761:8761
-  config:
-    image: kite/microservice-docker-config:0.0.1-SNAPSHOT
-    volumes:
-      - ./config-data:/var/config-data
-    environment:
-      - JAVA_OPTS=
-        -DEUREKA_SERVER=http://discovery:8761/eureka
-        -Dspring.cloud.config.server.native.searchLocations=/var/config-data
-    depends_on:
-      - discovery
-    ports:
-      - 8888:8888

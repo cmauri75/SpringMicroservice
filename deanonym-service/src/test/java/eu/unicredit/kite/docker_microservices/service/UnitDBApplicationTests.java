@@ -25,8 +25,8 @@ public class UnitDBApplicationTests {
     @Test
     public void getAllRecordsDb() throws Exception {
         List<Kiteuser> records = kiteUserDao.findAll();
-        Assert.assertEquals(3,records.size());
-        Assert.assertEquals("C1",records.get(0).getCode());
+        Assert.assertEquals(5,records.size());
+        Assert.assertEquals("P2",records.get(0).getCode());
     }
 
 }

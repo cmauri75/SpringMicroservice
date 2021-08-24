@@ -64,3 +64,21 @@ Will contain Okta config
 * Tests: impostare sistema di integration test: DB di test, startare docker per backend, startare UI (ok) invocare servizio. 
 
 ### Based on: https://developer.okta.com/blog/2019/02/28/spring-microservices-docker#use-docker-to-package-your-spring-apps
+
+#Working
+* Running app:
+`
+docker-compose -f docker-compose-env.yml -f docker-compose-conf.yml -f docker-compose-app.yml up
+`
+This contains DB prod + eureka + config + 2 apps. Intra references are made by internal docker names 
+
+* Tests and development
+- eureka and DBs are started by compose, config must be started outside cause it must register via real name
+- services must be run via spring-boot or ide. Unit test works against test db, Integration tests works against service notest db
+`
+docker-compose -f docker-compose-env.yml -f docker-compose-dbtest.yml up
+cd config && mvn spring-boot:run
+cd ..
+cd deanonym-service && mvn spring-boot:run
+cd deanonym-ui && mvn spring-boot:run
+`

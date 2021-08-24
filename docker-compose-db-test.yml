@@ -1,13 +1,13 @@
 version: '3'
 services:
-  datastorage:
+  datastorage-test:
     build:
       context: docker-support/datastorage
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       - POSTGRES_USER=kitedb
-      - POSTGRES_PASSWORD=IlMioSecret@
+      - POSTGRES_PASSWORD=kitedb
       - TZ=GMT
-      - DB_USERNAME=deanonym
-      - DB_PWD=deanpwd
+      - DB_USERNAME=deanonymtest
+      - DB_PWD=test
