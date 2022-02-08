@@ -9,7 +9,7 @@
 Exposes services via rest
 * Created using initalyzer with: Jdk1.8, JPA, Web, Lombok, H2
 
-Starting service `mvn spring-boot:run`
+Starting service `runme.sh`
 
 ### Hot parts:
 * application.properties for port exposing
@@ -74,7 +74,7 @@ This contains DB prod + eureka + config + 2 apps. Intra references are made by i
 
 * Tests and development
 - eureka and DBs are started by compose, config must be started outside as it must register via real name
-- services must be run via spring-boot or ide. Unit test works against test db, Integration tests works against service notest db
+- services must be run via spring-boot or ide. Unit test works against test db, Integration tests works against service test db. UI tests need a backend service available.
 `
 docker-compose -f docker-compose-env.yml -f docker-compose-db-test.yml up
 cd config && ./startme.sh

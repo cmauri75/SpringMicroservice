@@ -36,7 +36,7 @@ public class IntegrationApplicationTests {
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name", is("Giuseppe")))
+                .andExpect(jsonPath("$.name", is("Cesare")))
                 .andExpect(jsonPath("$.company", is(false)));
     }
 

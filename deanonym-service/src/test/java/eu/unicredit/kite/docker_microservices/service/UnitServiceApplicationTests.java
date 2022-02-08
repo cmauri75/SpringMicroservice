@@ -35,12 +35,11 @@ public class UnitServiceApplicationTests {
     @Autowired
     MockMvc mockMvc;
 
-    Kiteuser RECORD_1 = new Kiteuser("P1", "Cesare", "Mauri", null, false);
-    Kiteuser RECORD_2 = new Kiteuser("C1", null, null, "TInvention", true);
-
     @Before
     public void setup() {
-        List<Kiteuser> records = new ArrayList<>(Arrays.asList(RECORD_1, RECORD_2));
+        List<Kiteuser> records = new ArrayList<>(Arrays.asList(
+                Kiteuser.builder().code("P1").name("Cesare").surname("Mauri").isCompany(false).build(),
+                Kiteuser.builder().code("C1").companyName("TInvention").isCompany(true).build()));
         Mockito.when(kiteUserDaoMock.findAll()).thenReturn(records);
     }
 
