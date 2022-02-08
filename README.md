@@ -73,12 +73,12 @@ docker-compose -f docker-compose-env.yml -f docker-compose-conf.yml -f docker-co
 This contains DB prod + eureka + config + 2 apps. Intra references are made by internal docker names 
 
 * Tests and development
-- eureka and DBs are started by compose, config must be started outside cause it must register via real name
+- eureka and DBs are started by compose, config must be started outside as it must register via real name
 - services must be run via spring-boot or ide. Unit test works against test db, Integration tests works against service notest db
 `
-docker-compose -f docker-compose-env.yml -f docker-compose-dbtest.yml up
-cd config && mvn spring-boot:run
+docker-compose -f docker-compose-env.yml -f docker-compose-db-test.yml up
+cd config && ./startme.sh
 cd ..
-cd deanonym-service && mvn spring-boot:run
+cd deanonym-service && ./runme.sh
 cd deanonym-ui && mvn spring-boot:run
 `

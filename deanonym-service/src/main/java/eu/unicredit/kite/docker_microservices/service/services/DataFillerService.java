@@ -2,32 +2,24 @@ package eu.unicredit.kite.docker_microservices.service.services;
 
 import eu.unicredit.kite.docker_microservices.service.dao.KiteuserDao;
 import eu.unicredit.kite.docker_microservices.service.entities.Kiteuser;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-
-@Service
-public class DataFillerService {
-
+/**
+ * Example bean for startup data and initialization.
+ * No more needed as liquibase will load data as needed
+ */
+@Component
+@AllArgsConstructor
+public class DataFillerService implements ApplicationRunner {
     private final KiteuserDao userDao;
 
-    public DataFillerService(KiteuserDao userDao) {
-        this.userDao = userDao;
-    }
-
-    @PostConstruct
-    @Transactional
-    public void fillData(){
-        Kiteuser u1 = Kiteuser.createCompany("C1","Company 1");
-        Kiteuser u2 = Kiteuser.createCompany("C2","Company 2");
-        Kiteuser u3 = Kiteuser.createPerson("P1","Cesare", "Mauri");
-        Kiteuser u4 = Kiteuser.createPerson("P1","Giuseppe", "Rossini");
-
-        userDao.save(u1);
-        userDao.save(u2);
-        userDao.save(u3);
-        userDao.save(u4);
-
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        userDao.save(Kiteuser.builder().code("S1").companyName("Start Company").isCompany(true).build());
+        userDao.save(Kiteuser.builder().code("S2").name("Start").surname("Person").isCompany(false).build());
     }
 }

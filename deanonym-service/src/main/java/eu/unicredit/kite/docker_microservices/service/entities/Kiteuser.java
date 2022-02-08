@@ -2,13 +2,19 @@ package eu.unicredit.kite.docker_microservices.service.entities;
 
 
 import lombok.*;
+import org.hibernate.Hibernate;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Kiteuser {
     @Id
     @NonNull private String code;
@@ -17,12 +23,16 @@ public class Kiteuser {
     private String companyName;
     @NonNull private boolean isCompany;
 
-    public static Kiteuser createCompany(String code, String companyName) {
-        return new Kiteuser(code, null,null,companyName,true);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Kiteuser kiteuser = (Kiteuser) o;
+        return code != null && Objects.equals(code, kiteuser.code);
     }
 
-    public static Kiteuser createPerson(String code, String name, String surname) {
-        return new Kiteuser(code, name,surname,null,false);
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
-
 }
